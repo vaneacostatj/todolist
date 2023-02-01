@@ -23,7 +23,7 @@ const Task_get = async (_, {filter={}, options={}}) => {
       find.limit(limit)
     }
     let results = await find.lean()
-    //console.log(results);
+
     return results
     
   } catch (error) {
@@ -80,8 +80,8 @@ const Task_update = async (_, {taskInput}) => {
 const Task_create = async (_, args) => {
   try {
     const ID = generateId()
-    const { name, taskListId, description, assignedUser } = args.taskInput
-    new task ({_id:ID,  name, taskListId, description, assignedUser}).save()
+    const { name, taskListId, description, userId } = args.taskInput
+    new task ({_id:ID,  name, taskListId, description, userId}).save()
     return ID
   } catch (error) {
     console.error(`se crea error en createTask ${error}`);
@@ -122,7 +122,7 @@ const ToDoList_get = async (_, args) => {
       {
         $lookup : {
           from : "user",
-          localField : "assignedUser",
+          localField : "userId",
           foreignField : "_id",
           as : "user"
         }

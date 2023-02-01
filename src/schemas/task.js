@@ -9,7 +9,7 @@ scalar GraphQLDateTime
   type Task {
     _id: String,
     taskListId: String,
-    assignedUser: String,
+    userId: String,
     name: String,
     description: String,
     taskList: TaskList,
@@ -29,7 +29,7 @@ scalar GraphQLDateTime
     taskListId: String
     name: String
     description: String
-    assignedUser: String
+    userId: String
   }
   input Option{
     limit:Int

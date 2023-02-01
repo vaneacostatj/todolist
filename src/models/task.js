@@ -6,7 +6,7 @@ const collectionName = "task"
 const taskSchema = Schema({
   _id : String,
   taskListId : String,
-  assignedUser : String,
+  userId : String,
   name : String,
   description : String,
   updatedAt: {type: Date, default: Date.now},
